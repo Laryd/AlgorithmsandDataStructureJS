@@ -68,3 +68,21 @@ myStack.push(2)
 console.log(myStack.peek)  //item on top is 2
 console.log(myStack.pop)  //item on top is removed and it is 2 which is then returned
 console.log(myStack.peek)  //item on top is now 1 now that 2 was popped off
+
+
+//"this" is a keyword in JavaScript that refers to the current object that the code is being executed in.
+// It can be used to access properties and methods of the current object, 
+// as well as to set the value of the "this" keyword within a given scope.
+//Here's an example to help illustrate the concept:
+
+const person = {
+  name: "John",
+  greet: function() {
+    console.log("Hello, my name is " + this.name);
+  }
+};
+
+person.greet(); // Output: "Hello, my name is John"
+// In this example, the "this" keyword is being used to access the "name" property of the "person" object. 
+// The value of "this" within the greet method is set to refer to the "person" object, 
+// so when we call person.greet(), the output is "Hello, my name is John".
