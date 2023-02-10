@@ -85,4 +85,31 @@ const person = {
 person.greet(); // Output: "Hello, my name is John"
 // In this example, the "this" keyword is being used to access the "name" property of the "person" object. 
 // The value of "this" within the greet method is set to refer to the "person" object, 
-// so when we call person.greet(), the output is "Hello, my name is John".
+// so when we call person.greet(), the output is "Hello, my name is John"
+
+//Sets
+
+function mySet(){
+  // the const collection will hold the set
+  const collection = []
+  this.has = function(element){
+    //this method will check for the presence of an element and return true or false
+    return (collection.indexOf(element) !== -1)
+  }
+  //this method will return all the elements in the set
+  this.values = function(){
+     return collection
+  }
+  //this method will add an element to the set
+  this.add = function(element){
+    if(!this.has(element)){  //does the collection have the element?
+      collection.push(element)
+      return true
+    }
+    return false
+  }
+  //this method will remove an element from a set
+  this.remove = function(element){
+    if(this.has(element))
+  }
+}
