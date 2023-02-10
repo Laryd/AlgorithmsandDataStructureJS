@@ -110,6 +110,19 @@ function mySet(){
   }
   //this method will remove an element from a set
   this.remove = function(element){
-    if(this.has(element))
+    if(this.has(element)){
+      index = collection.indexOf(element);
+      collection.splice(index,1) //remove one element at the index of index
+      return true
+    }
+    return false
+  }
+  //this method will return the size of the collection
+  this.size = function(){
+    return collection.length
+  };
+  //this method will return the union of two sets
+  this.union = function(otherSet){
+    
   }
 }
