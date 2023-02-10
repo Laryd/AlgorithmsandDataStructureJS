@@ -31,111 +31,151 @@ if (rword === word) {
 //racecar is a palindrome
 
 //And Now Creating our Stack from scratch
-const Stack = function(){
-    this.count = 0
-    this.storage = {}
+const Stack = function () {
+  this.count = 0;
+  this.storage = {};
 
-    //adds value to the end of stack
-    this.push = function(value){
-        this.storage[this.count] = value
-        this.count++
+  //adds value to the end of stack
+  this.push = function (value) {
+    this.storage[this.count] = value;
+    this.count++;
+  };
+  //removes and returns value at the end of stack
+  this.pop = function () {
+    if (this.count === 0) {
+      return undefined;
     }
-    //removes and returns value at the end of stack
-    this.pop = function(){
-        if(this.count === 0){
-            return undefined
-        }
-        this.count--;
-        const result = this.storage[this.count]
-        delete this.storage[this.count]
-        return result
-    }
-    //the size of the stack
-    this.size = function(){
-        return this.count
-    }
+    this.count--;
+    const result = this.storage[this.count];
+    delete this.storage[this.count];
+    return result;
+  };
+  //the size of the stack
+  this.size = function () {
+    return this.count;
+  };
 
-    //peek the top value 
-    this.peek = function(){
-        return this.storage[this.count-1]
-    }
-}
+  //peek the top value
+  this.peek = function () {
+    return this.storage[this.count - 1];
+  };
+};
 
 //application of our stack now
-const myStack = new Stack()
-myStack.push(1)
-myStack.push(2)
-console.log(myStack.peek)  //item on top is 2
-console.log(myStack.pop)  //item on top is removed and it is 2 which is then returned
-console.log(myStack.peek)  //item on top is now 1 now that 2 was popped off
-
+const myStack = new Stack();
+myStack.push(1);
+myStack.push(2);
+console.log(myStack.peek); //item on top is 2
+console.log(myStack.pop); //item on top is removed and it is 2 which is then returned
+console.log(myStack.peek); //item on top is now 1 now that 2 was popped off
 
 //"this" is a keyword in JavaScript that refers to the current object that the code is being executed in.
-// It can be used to access properties and methods of the current object, 
+// It can be used to access properties and methods of the current object,
 // as well as to set the value of the "this" keyword within a given scope.
 //Here's an example to help illustrate the concept:
 
 const person = {
   name: "John",
-  greet: function() {
+  greet: function () {
     console.log("Hello, my name is " + this.name);
-  }
+  },
 };
 
 person.greet(); // Output: "Hello, my name is John"
-// In this example, the "this" keyword is being used to access the "name" property of the "person" object. 
-// The value of "this" within the greet method is set to refer to the "person" object, 
+// In this example, the "this" keyword is being used to access the "name" property of the "person" object.
+// The value of "this" within the greet method is set to refer to the "person" object,
 // so when we call person.greet(), the output is "Hello, my name is John"
 
 //Sets
 
-function mySet(){
+function mySet() {
   // the const collection will hold the set
-  const collection = []
-  this.has = function(element){
+  const collection = [];
+  this.has = function (element) {
     //this method will check for the presence of an element and return true or false
-    return (collection.indexOf(element) !== -1)
-  }
+    return collection.indexOf(element) !== -1;
+  };
   //this method will return all the elements in the set
-  this.values = function(){
-     return collection
-  }
+  this.values = function () {
+    return collection;
+  };
   //this method will add an element to the set
-  this.add = function(element){
-    if(!this.has(element)){  //does the collection have the element?
-      collection.push(element)
-      return true
+  this.add = function (element) {
+    if (!this.has(element)) {
+      //does the collection have the element?
+      collection.push(element);
+      return true;
     }
-    return false
-  }
+    return false;
+  };
   //this method will remove an element from a set
-  this.remove = function(element){
-    if(this.has(element)){
+  this.remove = function (element) {
+    //in es6 this method is delete
+    if (this.has(element)) {
       index = collection.indexOf(element);
-      collection.splice(index,1) //remove one element at the index of index
-      return true
+      collection.splice(index, 1); //remove one element at the index of index
+      return true;
     }
-    return false
-  }
+    return false;
+  };
   //this method will return the size of the collection
-  this.size = function(){
-    return collection.length
+  this.size = function () {
+    //not a method in es6 it's a property
+    return collection.length;
   };
   //this method will return the union of two sets
-  this.union = function(otherSet){
-    const unionSet = new Set()
-    const firstSet = this.values()
-    const secondSet = otherSet.values()
-    firstSet.forEach(function(e){
-      unionSet.add(e)
-    })
+  //general set methods
+  this.union = function (otherSet) {
+    const unionSet = new mySet();
+    const firstSet = this.values();
+    const secondSet = otherSet.values();
+    firstSet.forEach(function (e) {
+      unionSet.add(e);
+    });
     secondSet.forEach(function (e) {
       unionSet.add(e);
     });
-    return unionSet
-  }
+    return unionSet;
+  };
   //this will return the intersection of two sets as a new set
-  this.intersection = function(otherSet){
-    
-  }
+  this.intersection = function (otherSet) {
+    const intersectionSet = new mySet();
+    const firstSet = this.values();
+    firstSet.forEach(function (e) {
+      if (otherSet.has(e)) {
+        intersectionSet.add(e);
+      }
+    });
+    return intersectionSet;
+  };
+
+  //this method will return the difference of two sets as a new set
+  this.difference = function (otherSet) {
+    const differenceSet = new mySet();
+    const firstSet = this.values();
+    firstSet.forEach(function (e) {
+      if (!otherSet.has(e)) {
+        differenceSet.add(e);
+      }
+    });
+    return differenceSet;
+  };
+  //this method will test if the set is a subset of a different set
+  this.subset = function (otherSet) {
+    const firstSet = this.values();
+    return firstSet.every(function (value) {
+      return otherSet.has(value);
+    });
+  };
 }
+
+const setA = new mySet();
+const setB = new mySet();
+
+setA.add("a");
+setB.add("b");
+setB.add("c");
+setB.add("a");
+setB.add("d");
+
+console.log(setA.subset(setB)); //true
