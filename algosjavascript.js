@@ -8,7 +8,7 @@
 
 //application example
 //Test is a word is a palindrome
-console.log('stack')
+console.log("stack");
 const letters = []; //this here is our stack
 const word = "racecar";
 let rword = "";
@@ -87,7 +87,7 @@ person.greet(); // Output: "Hello, my name is John"
 // so when we call person.greet(), the output is "Hello, my name is John"
 
 //Sets
-console.log('Sets data structure')
+console.log("Sets data structure");
 function mySet() {
   // the const collection will hold the set
   const collection = [];
@@ -180,4 +180,21 @@ setB.add("d");
 
 console.log(setA.subset(setB)); //true
 
-console.log(setA.intersection(setB).values()) // ['a']
+console.log(setA.intersection(setB).values()); // ['a']
+
+console.log("built in set");
+
+const setC = new mySet();
+const setD = new mySet();
+
+setC.add("a");
+setD.add("b");
+setD.add("c");
+setD.add("a");
+setD.add("d");
+
+console.log(setC.subset(setD)); //true
+
+console.log(setC.intersection(setD).values()); // [object set iterator]
+setD.remove("a");
+console.log(setD.has("a"));
