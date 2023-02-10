@@ -8,7 +8,7 @@
 
 //application example
 //Test is a word is a palindrome
-
+console.log('stack')
 const letters = []; //this here is our stack
 const word = "racecar";
 let rword = "";
@@ -87,7 +87,7 @@ person.greet(); // Output: "Hello, my name is John"
 // so when we call person.greet(), the output is "Hello, my name is John"
 
 //Sets
-
+console.log('Sets data structure')
 function mySet() {
   // the const collection will hold the set
   const collection = [];
@@ -179,3 +179,5 @@ setB.add("a");
 setB.add("d");
 
 console.log(setA.subset(setB)); //true
+
+console.log(setA.intersection(setB).values()) // ['a']
