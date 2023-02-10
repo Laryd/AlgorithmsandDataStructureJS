@@ -123,6 +123,19 @@ function mySet(){
   };
   //this method will return the union of two sets
   this.union = function(otherSet){
+    const unionSet = new Set()
+    const firstSet = this.values()
+    const secondSet = otherSet.values()
+    firstSet.forEach(function(e){
+      unionSet.add(e)
+    })
+    secondSet.forEach(function (e) {
+      unionSet.add(e);
+    });
+    return unionSet
+  }
+  //this will return the intersection of two sets as a new set
+  this.intersection = function(otherSet){
     
   }
 }
