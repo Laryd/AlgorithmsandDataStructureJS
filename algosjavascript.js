@@ -198,3 +198,7 @@ console.log(setC.subset(setD)); //true
 console.log(setC.intersection(setD).values()); // [object set iterator]
 setD.remove("a");
 console.log(setD.has("a"));
+
+//Queue
+console.log('queue data structure')
+
