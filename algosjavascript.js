@@ -201,4 +201,44 @@ console.log(setD.has("a"));
 
 //Queue
 console.log('queue data structure')
+//first in first out. An analogy of this is waiting in a queue in a bank.
+//It basically is first come first serve
+//Another example is a print queue, documents sent to be printed will print according to the one
+//that arrived first.
+//just like stack it can be implemented using an array
+//basically implements push to put element at the end of array, and and shift
+//instead of pop to remove the first element of an array instead of the last
+function Queue(){
+  const collection = []
+  this.print = function(){
+    console.log(collection)
 
+  }
+  this.enqueue = function(element){
+    collection.push(element)
+  }
+  this.dequeue = function(element){
+     return collection.shift()
+  }
+  this.front = function(){
+    return collection[0]
+  }
+  this.size = function() {
+    return collection.length
+  }
+  this.isEmpty = function(){
+    return (collection.length === 0)
+  }
+}
+console.log('queue outputs')
+const myQueue = new Queue()
+myQueue.enqueue('a')
+myQueue.enqueue("b");
+myQueue.enqueue("c");
+myQueue.enqueue("d");
+myQueue.print() //['a', 'b', 'c', 'd' ]
+myQueue.dequeue('a')
+myQueue.print() //['b', 'c', 'd' ]
+console.log(myQueue.front()) //['b']
+console.log(myQueue.size()) //3
+console.log(myQueue.isEmpty()) //false
