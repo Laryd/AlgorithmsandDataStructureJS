@@ -200,7 +200,7 @@ setD.remove("a");
 console.log(setD.has("a"));
 
 //Queue
-console.log('queue data structure')
+console.log("queue data structure");
 //first in first out. An analogy of this is waiting in a queue in a bank.
 //It basically is first come first serve
 //Another example is a print queue, documents sent to be printed will print according to the one
@@ -208,37 +208,76 @@ console.log('queue data structure')
 //just like stack it can be implemented using an array
 //basically implements push to put element at the end of array, and and shift
 //instead of pop to remove the first element of an array instead of the last
-function Queue(){
-  const collection = []
-  this.print = function(){
-    console.log(collection)
-
-  }
-  this.enqueue = function(element){
-    collection.push(element)
-  }
-  this.dequeue = function(element){
-     return collection.shift()
-  }
-  this.front = function(){
-    return collection[0]
-  }
-  this.size = function() {
-    return collection.length
-  }
-  this.isEmpty = function(){
-    return (collection.length === 0)
-  }
+function Queue() {
+  const collection = [];
+  this.print = function () {
+    console.log(collection);
+  };
+  this.enqueue = function (element) {
+    collection.push(element);
+  };
+  this.dequeue = function (element) {
+    return collection.shift();
+  };
+  this.front = function () {
+    return collection[0];
+  };
+  this.size = function () {
+    return collection.length;
+  };
+  this.isEmpty = function () {
+    return collection.length === 0;
+  };
 }
-console.log('queue outputs')
-const myQueue = new Queue()
-myQueue.enqueue('a')
+console.log("queue outputs");
+const myQueue = new Queue();
+myQueue.enqueue("a");
 myQueue.enqueue("b");
 myQueue.enqueue("c");
 myQueue.enqueue("d");
-myQueue.print() //['a', 'b', 'c', 'd' ]
-myQueue.dequeue('a')
-myQueue.print() //['b', 'c', 'd' ]
-console.log(myQueue.front()) //['b']
-console.log(myQueue.size()) //3
-console.log(myQueue.isEmpty()) //false
+myQueue.print(); //['a', 'b', 'c', 'd' ]
+myQueue.dequeue("a");
+myQueue.print(); //['b', 'c', 'd' ]
+console.log(myQueue.front()); //['b']
+console.log(myQueue.size()); //3
+console.log(myQueue.isEmpty()); //false
+
+//another way to create a queue is a priority queue
+//you pass the priority of the element
+
+function PriorityQueue() {
+  const collection = [];
+  this.printCollection = function () {
+    console.log(collection);
+  };
+  this.enqueue = function(element){
+       if(this.isEmpty()){
+        collection.push(element)
+    } else {
+        let added = false
+        for(let i=0; i<collection.length; i++){ //checking priorities
+            if(element[i] < collection[i][1]){
+              collection.splice(i,0, element)
+              added = true
+              break
+            }
+          }
+          if(!added){
+            collection.push(element)
+          }
+        }
+      }
+  this.dequeue = function (element) {
+    const value = collection.shift()
+    return value[0]
+  };
+  this.front = function () {
+    return collection[0];
+  };
+  this.size = function () {
+    return collection.length;
+  };
+  this.isEmpty = function () {
+    return collection.length === 0;
+  };
+ }
