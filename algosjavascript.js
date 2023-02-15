@@ -250,26 +250,27 @@ function PriorityQueue() {
   this.printCollection = function () {
     console.log(collection);
   };
-  this.enqueue = function(element){
-       if(this.isEmpty()){
-        collection.push(element)
+  this.enqueue = function (element) {
+    if (this.isEmpty()) {
+      collection.push(element);
     } else {
-        let added = false
-        for(let i=0; i<collection.length; i++){ //checking priorities
-            if(element[i] < collection[i][1]){
-              collection.splice(i,0, element)
-              added = true
-              break
-            }
-          }
-          if(!added){
-            collection.push(element)
-          }
+      let added = false;
+      for (let i = 0; i < collection.length; i++) {
+        //checking priorities
+        if (element[1] < collection[i][1]) {
+          collection.splice(i, 0, element); //this here tells to start at index i, and add element to that index without removing any element
+          added = true;
+          break;
         }
       }
+      if (!added) {
+        collection.push(element);
+      }
+    }
+  };
   this.dequeue = function (element) {
-    const value = collection.shift()
-    return value[0]
+    const value = collection.shift();
+    return value[0];
   };
   this.front = function () {
     return collection[0];
@@ -280,4 +281,14 @@ function PriorityQueue() {
   this.isEmpty = function () {
     return collection.length === 0;
   };
- }
+}
+
+//priority queue example
+
+const pq = new PriorityQueue();
+pq.enqueue(["Omego Ken", 3]);
+pq.enqueue(["Hillary Omamo", 1]);
+pq.enqueue(["Eugene Omamo", 5]);
+pq.enqueue(["Japheth Okune", 3]);
+pq.printCollection(); //[ [ 'Hillary Omamo', 1 ], [ 'Omego Ken', 3 ], [ 'Japheth Okune', 3 ],[ 'Eugene Omamo', 5 ]]
+//nomatter the order, it will be arranged according to the priority stated
