@@ -257,7 +257,7 @@ function PriorityQueue() {
       let added = false;
       for (let i = 0; i < collection.length; i++) {
         //checking priorities
-        if (element[1] < collection[i][1]) {
+        if (element[1] < collection[i][1]) { //keep in mind the collection is an array containing [element, priority]
           collection.splice(i, 0, element); //this here tells to start at index i, and add element to that index without removing any element
           added = true;
           break;
@@ -284,6 +284,7 @@ function PriorityQueue() {
 }
 
 //priority queue example
+console.log("priorityqueues")
 
 const pq = new PriorityQueue();
 pq.enqueue(["Omego Ken", 3]);
@@ -292,3 +293,12 @@ pq.enqueue(["Eugene Omamo", 5]);
 pq.enqueue(["Japheth Okune", 3]);
 pq.printCollection(); //[ [ 'Hillary Omamo', 1 ], [ 'Omego Ken', 3 ], [ 'Japheth Okune', 3 ],[ 'Eugene Omamo', 5 ]]
 //nomatter the order, it will be arranged according to the priority stated
+
+//Binary Search Tree
+//used to store data that when visualized looks like a tree you would see in nature
+console.log('Binary Search Tree')
+
+function BinarySearchTree(){
+  
+}
+
