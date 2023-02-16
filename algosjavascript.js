@@ -321,7 +321,9 @@ class BST {
           if(node.left === null){
             node.left = new Node(data)
             return
-          } else if(node.left)
+          } else if(node.left !== null){
+            return searchTree(node.left)
+          }
         }
       }
     }
