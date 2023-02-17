@@ -366,4 +366,17 @@ class BST {
      }
      return false  //if data is not present return false
   }
+  remove(data){
+    const removeNode = function(node, data){
+      if(node===null){
+        return null
+      }
+      if (data === node.data){
+        //node has no children
+        if (node.left === null && node.right === null){
+          return null
+        }
+      }
+    }
+  }
 }
