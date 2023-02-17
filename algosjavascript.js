@@ -376,6 +376,14 @@ class BST {
         if (node.left === null && node.right === null){
           return null
         }
+        //node has no left child
+        if (node.left === null){
+          return node.right
+        }
+        //node has no right child
+        if (node.right === null){
+          return node.left
+        }
       }
     }
   }
