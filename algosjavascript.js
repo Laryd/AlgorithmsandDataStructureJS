@@ -298,7 +298,7 @@ pq.printCollection(); //[ [ 'Hillary Omamo', 1 ], [ 'Omego Ken', 3 ], [ 'Japheth
 //used to store data that when visualized looks like a tree you would see in nature
 console.log('Binary Search Tree')
 console.log('class implementation of binary search tree')
-class Node {
+class Node { //represents each node in the tree
   constructor(data, left=null, right = null){
     this.data = data
     this.left = left
@@ -306,7 +306,7 @@ class Node {
   }
 }
 
-class BST {
+class BST { 
   constructor(){
     this.root = null
   }
@@ -323,6 +323,11 @@ class BST {
             return
           } else if(node.left !== null){
             return searchTree(node.left)
+          }
+        }else if(data>node.data){
+          if(node.right === null){
+            node.right = new Node(data)
+            return
           }
         }
       }
