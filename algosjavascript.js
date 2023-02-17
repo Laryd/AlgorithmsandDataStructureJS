@@ -352,4 +352,18 @@ class BST {
     }
     return current.data
   }
+  isPresent(data){
+     let current = this.root
+     while(current){
+      if(data === current.data){ //if the data being searched is present in the current node, then return it has been found, true is returned
+        return true
+      }
+      if(data<current.data){ //if data is less than current.data, we go left
+        current = current.left
+      }else{ //if data is more than current.data, we go right
+        current = current.right
+      }
+     }
+     return false  //if data is not present return false
+  }
 }
