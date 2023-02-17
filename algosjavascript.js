@@ -403,3 +403,6 @@ class BST {
     this.root = removeNode(this.root, data)
   }
 }
+
+//BST implementation example
+console.log('bst implementation example')
