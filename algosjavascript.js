@@ -338,10 +338,17 @@ class BST {
       return searchTree(node)
     }
   }
-  findMin() {
+  findMin() { //min is the last value on the left side
     let current = this.root
     while(current.left !== null){
       current = current.left
+    }
+    return current.data
+  }
+  findMax(){  //max is the last value on the right side
+    let current = this.root
+    while(current.right !== null){
+      current = current.right
     }
     return current.data
   }
