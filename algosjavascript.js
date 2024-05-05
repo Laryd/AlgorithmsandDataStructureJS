@@ -113,7 +113,7 @@ function mySet() {
     //in es6 this method is delete
     if (this.has(element)) {
       index = collection.indexOf(element);
-      collection.splice(index, 1); //remove one element at the index of index
+      collection.splice(index, 1); //remove one element at the index 
       return true;
     }
     return false;
@@ -299,7 +299,7 @@ pq.printCollection(); //[ [ 'Hillary Omamo', 1 ], [ 'Omego Ken', 3 ], [ 'Japheth
 console.log('Binary Search Tree')
 console.log('class implementation of binary search tree')
 class Node { //represents each node in the tree
-  constructor(data, left=null, right = null){
+  constructor(data, left=null, right = null){    //a constructor is a special method for defining the properties and methods of objects
     this.data = data
     this.left = left
     this.right = right
@@ -406,3 +406,20 @@ class BST {
 
 //BST implementation example
 console.log('bst implementation example')
+const bst = new BST()
+
+bst.add(4)
+bst.add(2)
+bst.add(6)
+bst.add(1)
+bst.add(3);
+bst.add(5);
+bst.add(7);
+
+bst.remove(4)
+console.log(bst.findMin())
+console.log(bst.findMax())
+bst.remove(7)
+console.log(bst.findMax());
+
+//Binary search tree: Traversal and Height
